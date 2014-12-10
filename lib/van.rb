@@ -20,4 +20,8 @@ DEFAULT_CAPACITY = 5
 		@bikes.count == @capacity
 	end
 
+	def release(bike)
+		@bikes.delete(bike)
+	end
+
 end
