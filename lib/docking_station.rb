@@ -6,7 +6,8 @@ class DockingStation
 
   def initialize(options = {})
     self.capacity = options.fetch(:capacity, capacity)
-    @bikes = []
+    #@bikes = []
+    self.bikes
   end
 
 end
