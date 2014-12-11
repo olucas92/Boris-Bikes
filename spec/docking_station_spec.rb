@@ -13,4 +13,5 @@ describe DockingStation do
     station.empty?
     expect(station.bike_count).to eq(0)  
     end
+
 end
