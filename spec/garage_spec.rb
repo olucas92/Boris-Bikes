@@ -9,12 +9,13 @@ describe Garage do
   let(:bike) {Bike.new}
 
   let (:broken_bike) {double :bike, broken?: true}
+  let (:working_bike) {double :bike, broken?: false}
 
 	
 	it "should accept a broken bike from a van" do
 	 
 	 #garage = Garage.new
-   #broken_bike           = double :bike, broken?: true
+   broken_bike           = double :bike, broken?: true
    another_broken_bike   = double :bike, broken?: true
    van_with_broken_bikes = double :van, bikes: [broken_bike, another_broken_bike]
    working_bike          = double :bike, broken?: false
@@ -36,4 +37,9 @@ describe Garage do
     # expect(garage.bikes[0]).not_to be_broken
   end
 
+  it "should be able to release fixed bikes back to the van" do
+    garage.release(working_bike)
+    expect(garage.bike_count).to eq(0)
+    #expect(van.bike_count)
+  end
 end
