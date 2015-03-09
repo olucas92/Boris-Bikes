@@ -35,8 +35,14 @@ module BikeContainer
     bike_count == capacity
   end
 
+  BROKEN_BIKES = Proc.new {|bike| bike.broken?}
+
   def available_bikes
-    bikes.reject {|bike| bike.broken?}
+    bikes.reject(&BROKEN_BIKES)
+  end
+
+  def broken_bikes
+    bikes.select(&BROKEN_BIKES)
   end
 
 end

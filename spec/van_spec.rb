@@ -8,7 +8,7 @@ describe Van do
   let(:garage) {Garage.new}
 
 def fill_van(van)
-	10.times {van.dock(Bike.new)} 
+	10.times {van.dock(bike)} 
 end
 
 	it "should only accept a broken bike from the docking station" do
@@ -22,14 +22,14 @@ end
 	end
 
   it "should transfer all bikes to the docking station" do
-    10.times { van.dock(Bike.new) }
+    10.times { van.dock(bike) }
     station.take_available_bikes(van)
     expect(station.bike_count).to eq (10)
     expect(van.bike_count).to eq (0)
   end
 
   it "should be able to take fixed bikes from the garage" do
-    1.times { van.dock(Bike.new) }
+    1.times { van.dock(bike) }
     van.available_bikes
     expect(garage.bike_count).to eq (0)
     expect(van.bike_count).to eq(1)
